@@ -1,0 +1,134 @@
+.main-container{
+    margin-top: 20px;
+    margin-left: 4%;
+    margin-right: 4%; 
+    display: flex;
+    height: auto;
+    margin-bottom: 10px;
+}
+.image-container{
+    width:50%;
+   justify-content: center;
+   align-items: center;
+    overflow: hidden;
+}
+.creator-container{
+    margin-top: 60px;
+    width: 50%;
+    padding: 20px;
+    padding-left: 40px;
+
+}
+.creator-sub-container{
+    padding: 30px;
+    margin-top:80px;
+}
+.creator-name{
+    width: 100%;
+    font-size: 19px;
+    font-weight: 900;
+    margin-bottom: 15px;
+}
+.creator-prof{
+    width: 100%;
+    font-size: 12px;
+    margin-bottom: 15px;
+    letter-spacing: 1.18px;
+    color: #a1a1a1;
+    font-weight: lighter;
+}
+.creator-desc{
+    margin-bottom: 15px;
+    width: 100%;
+    text-align: justify;
+    height:auto;
+    font-size: 14px;
+    line-height: 24px;
+    color: #696969;
+}
+.custom-image{
+    width:600px;
+    height:500px;
+    
+}
+@media only screen
+
+and (min-device-width: 280px)
+
+and (max-device-width: 540px){
+     
+    * {
+        box-sizing: border-box;
+        margin: 0px;
+        padding: 0px;
+     }
+     .main-container{
+        display:block;
+    }
+    .image-container{
+        flex-direction: column; 
+         display:flex;
+         width: 100%;
+         justify-content: center;
+         align-items: center;
+    }
+    .creator-container{
+        flex-direction: column; 
+         display:flex;
+         width: 100%;
+        padding-left: 30px;
+        padding-right: 30px;
+        margin-top: 10px;
+    }
+    .custom-image{
+        width: 300px;
+        height:300px;
+    }
+
+
+}
+
+ @media only screen
+
+and (min-device-width: 540px)
+
+and (max-device-width: 667px){
+    .custom-image{
+        width: 300px;
+        height:300px;
+    }
+} 
+
+
+
+
+
+@media screen and (min-width:667px)and (max-width:1023px){
+    * {
+        box-sizing: border-box;
+        margin: 0px;
+        padding: 0px;
+     }
+     .main-container{
+        display:block;
+    }
+    .image-container{
+        flex-direction: column; 
+         display:flex;
+         width: 100%;
+         justify-content: center;
+         align-items: center;
+    }
+    .creator-container{
+        flex-direction: column; 
+         display:flex;
+         width: 100%;
+        padding-left: 90px;
+        padding-right: 90px;
+        margin-top: 10px;
+    }
+    .custom-image{
+        width: 650px;
+        height:auto;
+    }
+}

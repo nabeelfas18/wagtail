@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load static %}
+{% load wagtailcore_tags wagtailimages_tags %}
+{% load wagtailcore_tags %}
+
+{% block body_class %}template-contactpage{% endblock %}
+
+{% block content %}
+        
+    
+        <form action="{% url 'contact' %}" method="POST">
+            {% csrf_token %}
+            <input type="text" name="name" id="name" placeholder="Name" value="{{values.name}}" onblur="return namevalidate()" autocomplete="off"><br>
+            <span id="nameerror">{{values.nameerror}}</span><br>
+            <input type="email" name="email" id="email" placeholder="Email" value="{{values.email}}" onblur="return emailvalidate()"
+            onkeyup="return emailcheck()" autocomplete="off"><br>
+            <span id="emailerror">{{values.emailerror}}</span><br>
+            <input type="text" name="subject" id="subject" onblur="return subjectvalidate()" value="{{values.subject}}" placeholder="Subject" autocomplete="off"><br>
+            <span id="subjecterror">{{values.subjecterror}}</span><br>
+            <textarea name="message" id="message" placeholder="message" onblur="return messagevalidate()" value="{{values.message}}" autocomplete="off"></textarea><br>
+            <span id="messageerror">{{values.messageerror}}</span><br>
+            <input type="submit">
+            </form>
+
+
+    
+{% endblock %}

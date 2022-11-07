@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% load static %}
+{% load wagtailcore_tags wagtailimages_tags %}
+
+{% block body_class %}template-workpage{% endblock %}
+
+{% block content %}
+
+    <div class="intro">{{ page.intro|richtext }}</div>
+    <link rel = "stylesheet" href="{%static 'css/work.css' %}">
+
+    <div class="main-container">
+        <div class="cards">
+            {% for post in page.get_children %}
+                    {% with post=post.specific %}
+                        {% with post.main_image as main_image %}
+                        <div class="card">
+                            {% if main_image %}
+                                {% image main_image fill-350x300 as tmp_photo%}
+                                <a href="{% pageurl post %}"> <img src="{{ tmp_photo.url }}" width="{{ tmp_photo.width }}"
+                                height="{{ tmp_photo.height }}" alt="{{ tmp_photo.alt }}" class="custom-image"></a>
+                        
+                                <div class="content">
+                                    <div class="content-title"><p>{{ post.name }}</p></div>
+                                    <div class="content-subtitle"><p>{{post.subtitle}}</p></div>
+                                </div>
+
+                            {% endif %}
+                        </div>
+                        {% endwith %}
+                    {% endwith %}
+            {% endfor %}
+
+        </div>
+        <div class="content">
+            <div class="content-title"><p>{{ post.name }}</p></div>
+            <div class="content-subtitle"><p>{{post.subtitle}}</p></div>
+        </div>
+    </div>
+
+{% endblock %}

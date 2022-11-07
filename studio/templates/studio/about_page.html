@@ -1,0 +1,32 @@
+
+{% extends "base.html" %}
+{% load static %}
+{% load wagtailcore_tags wagtailimages_tags %}
+{% load wagtailcore_tags %}
+
+{% block body_class %}template-aboutpage{% endblock %}
+
+{% block content %}
+
+    <div class="main-container">
+        <div class="image-container">
+           
+        
+                <!-- {% image item.image fill-665x674 %} -->
+                {% for item in page.gallery_images.all %}
+                    {% image item.image original as tmp_photo %}
+                    <img src="{{ tmp_photo.url }}" width="{{ tmp_photo.width }}"
+                    height="{{ tmp_photo.height }}" alt="{{ tmp_photo.alt }}" class="custom-image" />
+                {% endfor %} 
+        </div>
+        <div class="creator-container">
+            <div class="creator-name">{{ page.name }}</div>
+            <div class="creator-prof">{{ page.subtitle }}</div>
+            <div class="creator-desc"><p>{{ page.description | richtext}}</p></div>
+        </div>
+    </div>
+{% endblock %}
+
+
+
+<!--  -->
