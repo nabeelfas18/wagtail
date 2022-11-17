@@ -1,27 +1,84 @@
 {% extends "base.html" %}
 {% load static %}
-{% load wagtailcore_tags wagtailimages_tags %}
-{% load wagtailcore_tags %}
 
-{% block body_class %}template-contactpage{% endblock %}
+{% load wagtailcore_tags wagtailimages_tags %}
+
+{% block body_class %}template-contactpages{% endblock %}
 
 {% block content %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'css/contact.css' %}">
+
+<div class="contact-container">
+  
+    <div class="contact-sub-container">
+        <div class="form-container">
+
+            <div class="getintouch">Get in touch</div>
+            {% if messages %}
+            <div class="alert-alert-success">
+                {% for m in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ m }}</li>
+                {% endfor %}
+            </div>
+            {% else %}
+                <form action="" method="POST" class="form">
+                    {% csrf_token %}
+                                
+                    <div class="field">
+                        <input class="form-name" type="text" name="name" autocomplete="off"
+                        {% if form.is_bound %}value="{{ form.name.value }}"{% endif %} 
+                        placeholder="Name *">
+                        
+                        {% for err in form.name.errors %}
+                            <p class="form_error">{{ form.name.errors }}</p>
+                        {% endfor %}
+                    </div>
+
+                    <div class="field">
+                        <input class="form-email" type="text" name="email" autocomplete="off"
+                        {% if form.is_bound %}value="{{ form.email.value }}"{% endif %} 
+                        placeholder="Email Address *">
+                        
+                        {% for err in form.email.errors %}
+                            <p class="form_error">{{ form.email.errors }}</p>
+                        {% endfor %}
+                    </div>
+
+                    <div class="field">
+                        <input class="form-subject" type="text" name="subject" autocomplete="off"
+                        {% if form.is_bound %}value="{{ form.subject.value }}"{% endif %} 
+                        placeholder="Subject *">
+                        {% for err in form.subject.errors %}
+                            <p class="error">{{form.subject.errors}}</p>
+                        {% endfor %}
+                    </div>
+
+                    <div class="field" >
+                        <textarea class="form-message" type="text" autocomplete="off" name="message" cols="10" placeholder="Message *">{% if form.is_bound %} {{ form.Message.value }}{% endif %}</textarea>
+                        {% for err in form.message.errors %}
+                            <p class="error">{{form.message.errors}}</p>
+                        {% endfor %}
+                    </div>
+
+                    <input type="submit" class="submit">
+
+                </form>
         
-    
-        <form action="{% url 'contact' %}" method="POST">
-            {% csrf_token %}
-            <input type="text" name="name" id="name" placeholder="Name" value="{{values.name}}" onblur="return namevalidate()" autocomplete="off"><br>
-            <span id="nameerror">{{values.nameerror}}</span><br>
-            <input type="email" name="email" id="email" placeholder="Email" value="{{values.email}}" onblur="return emailvalidate()"
-            onkeyup="return emailcheck()" autocomplete="off"><br>
-            <span id="emailerror">{{values.emailerror}}</span><br>
-            <input type="text" name="subject" id="subject" onblur="return subjectvalidate()" value="{{values.subject}}" placeholder="Subject" autocomplete="off"><br>
-            <span id="subjecterror">{{values.subjecterror}}</span><br>
-            <textarea name="message" id="message" placeholder="message" onblur="return messagevalidate()" value="{{values.message}}" autocomplete="off"></textarea><br>
-            <span id="messageerror">{{values.messageerror}}</span><br>
-            <input type="submit">
-            </form>
+            {% endif %}
+            
+        </div>
+    </div>
+    <div class="snippet-main-container">
+        <div class="snippet-sub-container">
+            <div class="heading">Studio</div>
+            {% for author in mypublications  %}
+            <div class="title">{{ author.name }}:</div>
+            <div class="email">{{ author.email }}</div><br>
+            {% endfor %}
+        </div>
+    </div>
 
 
-    
+</div>
 {% endblock %}

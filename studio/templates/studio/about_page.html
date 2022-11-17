@@ -2,31 +2,34 @@
 {% extends "base.html" %}
 {% load static %}
 {% load wagtailcore_tags wagtailimages_tags %}
+
 {% load wagtailcore_tags %}
 
 {% block body_class %}template-aboutpage{% endblock %}
 
 {% block content %}
-
-    <div class="main-container">
+<link rel="stylesheet" type="text/css" href="{% static 'css/about.css' %}">
+     <!-- p style="color: rgb(110, 128, 74);">Hello World from about page</p> -->
+    <div class="about-container">
         <div class="image-container">
-           
-        
-                <!-- {% image item.image fill-665x674 %} -->
+            <div class="image-sub-container">
                 {% for item in page.gallery_images.all %}
                     {% image item.image original as tmp_photo %}
                     <img src="{{ tmp_photo.url }}" width="{{ tmp_photo.width }}"
-                    height="{{ tmp_photo.height }}" alt="{{ tmp_photo.alt }}" class="custom-image" />
-                {% endfor %} 
+                    height="{{ tmp_photo.height }}" alt="{{ tmp_photo.alt }}" class="custom-image">
+                {% endfor %}
+            </div>
+
         </div>
-        <div class="creator-container">
-            <div class="creator-name">{{ page.name }}</div>
-            <div class="creator-prof">{{ page.subtitle }}</div>
-            <div class="creator-desc"><p>{{ page.description | richtext}}</p></div>
-        </div>
+        <div class="description-container">
+            <div class="description-sub-container">
+                    <div class="name">{{ page.name }}</div>
+                    <div class="subtitle">{{ page.subtitle }}</div>
+                    <div class="description"><p>{{ page.description | richtext}}</p></div>
+            </div>
+              
+        </div> 
+    </div>
     </div>
 {% endblock %}
 
-
-
-<!--  -->

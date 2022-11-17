@@ -1,37 +1,44 @@
-
 {% extends "base.html" %}
+
 {% load static %}
 {% load wagtailcore_tags wagtailimages_tags %}
 
 {% block body_class %}template-blogdetailspage{% endblock %}
 
 {% block content %}
-<link rel = "stylesheet" href="{%static 'css/blogdetails.css' %}">
-<p class="goback"><a href="{{ page.get_parent.url }}"> < < BACK</a></p>
-<div class="main-container">
 
-    <div class="cards">
-        
-        <div class="content">
-            <div class="title"><h3>{{ page.intro }}</h3></div>
-            <div class="description"><p>{{ page.date}}</p></div>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/blogdetails.css' %}">
+ 
+        <!-- <p class="goback"><a href="{{ page.get_parent.url }}"> < < GO BACK</a></p> -->
+
+        <div class="breads">
+            <ul class="breadcrumb">
+                <li><a href="{{ page.get_parent.url }}">Blogs</a></li>
+                <li>{{ page.blog_title }}</li>
+              </ul>
         </div>
-            {% for item in page.gallery_images.all %}
-            <div class="card">
-                {% image item.image fill-500x500 as tmp_photo%}
-                <img src="{{ tmp_photo.url }}" width="{{ tmp_photo.width }}"
-                height="{{ tmp_photo.height }}" alt="{{ tmp_photo.alt }}" class="custom-image">
 
-            </div>
+        <div class="main-container">
+            <div class="title">{{ page.blog_title }}</div>
+
+            <div class="date">{{ page.blog_date }}</div>
+
+            {% for item in page.gallery_images.all %}
+                <div class="card">
+                    {% image item.image original as tmp_photo%}
+                    <img src="{{ tmp_photo.url }}" width="{{ tmp_photo.width }}"
+                    height="{{ tmp_photo.height }}" alt="{{ tmp_photo.alt }}" class="custom-image">
+                </div>
             {% endfor %}
-            <div class="content">
-                <div class="description"><p>{{ page.blog_description |richtext}}</p></div>
+            
+            <div class="description">{{ page.blog_abstract | richtext }}{{ page.blog_description | richtext }}</div>
+
+        </div>
+        <div class="navigators-main">
+            <div class="navigators">
+                <div class="previous"><a href="{{ page.prev_portrait }}"><b>< Prev</b>  </a></div>
+                <div class="next"><a href="{{ page.next_portrait }}"><b>Next > </b></a></div>
             </div>
-    </div>
-</div>
-<div class="navigators">
-    <div class="previous"> < < prev</div>
-    <div class="next">next > ></div>
-</div>
+        </div>
 
 {% endblock %}

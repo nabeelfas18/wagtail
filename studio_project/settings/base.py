@@ -50,7 +50,9 @@ INSTALLED_APPS = [
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
+    'django_mail_admin',
     "django.contrib.staticfiles",
+    "vote",
     "studio",
     
 ]
@@ -154,12 +156,12 @@ STATICFILES_STORAGE = "django.contrib.staticfiles.storage.ManifestStaticFilesSto
 
 STATIC_ROOT = os.path.join(BASE_DIR, "static")
 STATIC_URL = "/static/"
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_BACKEND = 'django_mail_admin.backends.CustomEmailBackend'
+EMAIL_HOST_USER = "studioproject77@gmail.com"
+EMAIL_HOST = "smtp.gmail.com"
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'studioproject77@gmail.com'
-EMAIL_HOST_PASSWORD = 'alokin1234##'
-EMAIL_USE_TLS = True
+EMAIL_USE_TLS = False
+EMAIL_HOST_PASSWORD = "nqkbyrxrcnhxyhme"
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 MEDIA_URL = "/media/"
 

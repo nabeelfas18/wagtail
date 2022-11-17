@@ -1,32 +1,53 @@
 {% extends "base.html" %}
+
+{% load wagtailcore_tags %}
+
 {% load static %}
+
 {% load wagtailcore_tags wagtailimages_tags %}
 
-{% block body_class %}template-workdetailspage{% endblock %}
+{% block body_class %}template-homepage{% endblock %}
 
 {% block content %}
+
 <link rel = "stylesheet" href="{%static 'css/workdetails.css' %}">
-<p class="goback"><a href="{{ page.get_parent.url }}"> < < BACK</a></p>
 
-<div class="main-container">
-    <div class="cards">
-            {% for item in page.gallery_images.all %}
-            <div class="card">
-                {% image item.image fill-800x500 as tmp_photo%}
+    <div class="main-container">
+
+        <!-- <p class="goback"><a href="{{ page.get_parent.url }}"> < < GO BACK</a></p> -->
+        <div class="breads">
+            <ul class="breadcrumb">
+                <li><a href="{{ page.get_parent.url }}">Work</a></li>
+                <li class="selected">{{ page.title }}</li>
+              </ul>
+        </div> 
+        {% for item in page.gallery_images.all %}
+        <div class="image-container">
+            <div class="image-sub-container">
+                {% image item.image original as tmp_photo%}
                 <img src="{{ tmp_photo.url }}" width="{{ tmp_photo.width }}"
-                height="{{ tmp_photo.height }}" alt="{{ tmp_photo.alt }}" class="custom-image">
+                height="{{ tmp_photo.height }}" alt="{{ tmp_photo.alt }}" class="custom-images">
+            </div>
+        </div>
+        {% endfor %}
 
+        <div class="description-container">
+            <div class="description-sub-container">
+                <div class="title"><h4>{{ page.title }}</h4></div>
+                <div class="description"> {{ page.description |richtext}}</div>
             </div>
-            {% endfor %}
-            <div class="content">
-                <div class="title"><h3>{{ page.name }}</h3></div>
-                <div class="description"><p>{{ page.description |richtext}}</p></div>
+        </div>
+
+        <div class="navigation">
+            <div class="navigators">
+                <div class="previous"><a href="{{ page.prev_portrait }}"><b>< Prev</b>  </a></div>
+                <div class="next"><a href="{{ page.next_portrait }}"><b>Next > </b></a></div>
             </div>
+        </div>
+
+
     </div>
-</div>
-<div class="navigators">
-    <div class="previous"> < < prev</div>
-    <div class="next">next > ></div>
-</div>
+
+
 
 {% endblock %}

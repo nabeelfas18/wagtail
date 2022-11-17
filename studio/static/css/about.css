@@ -1,134 +1,186 @@
-.main-container{
-    margin-top: 20px;
-    margin-left: 4%;
-    margin-right: 4%; 
-    display: flex;
-    height: auto;
-    margin-bottom: 10px;
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
-.image-container{
-    width:50%;
-   justify-content: center;
-   align-items: center;
-    overflow: hidden;
-}
-.creator-container{
-    margin-top: 60px;
-    width: 50%;
-    padding: 20px;
-    padding-left: 40px;
 
+
+.about-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+    width: 100%;
+  
 }
-.creator-sub-container{
+
+.image-container{
+    width: 50%;
+}
+
+.image-sub-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.custom-image{
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+}
+
+.description-container{
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    margin: auto 0px auto 0px;
+}
+
+.description-sub-container{
+    flex-direction: column;
     padding: 30px;
-    margin-top:80px;
+    display: flex;
+    justify-content: center;
 }
-.creator-name{
-    width: 100%;
+
+.name{
+    padding: 8px;
     font-size: 19px;
+    margin-bottom: 15px;
     font-weight: 900;
-    margin-bottom: 15px;
 }
-.creator-prof{
-    width: 100%;
+
+.subtitle{
+    flex-direction: column;
+    padding: 8px;
     font-size: 12px;
-    margin-bottom: 15px;
-    letter-spacing: 1.18px;
     color: #a1a1a1;
     font-weight: lighter;
 }
-.creator-desc{
-    margin-bottom: 15px;
-    width: 100%;
-    text-align: justify;
-    height:auto;
+
+.description{
+    padding: 8px;
     font-size: 14px;
     line-height: 24px;
     color: #696969;
 }
-.custom-image{
-    width:600px;
-    height:500px;
+.about{
+    color: black;
+    border-width: 0px 0px 1px 0px;
+    border-color: #696969;
+    font-weight: 700;
+  }
+  
+  .work,.blog,.contact{
+    color: #696969;
+  }
+  
+
+
+/* Mobile View */
+@media screen and (min-width: 100px) and (max-width: 480px){
+    .about-container{
+        display: flex;
+        flex-direction: column;
+        height: auto;
+    }
+
+    .image-container{
+        width: 100%;
+        margin-bottom: 30px;
+    }
+
+    .custom-image{
+        width: 100%;
+        height: 400px;
+        object-fit: cover;
+    }
+
+    .description-container{
+        width: 100%;
+    }
+
+    .description-sub-container{
+        width: 100%;
+        padding: 0px;
+    }
+
     
-}
-@media only screen
-
-and (min-device-width: 280px)
-
-and (max-device-width: 540px){
-     
-    * {
-        box-sizing: border-box;
-        margin: 0px;
-        padding: 0px;
-     }
-     .main-container{
-        display:block;
+    .name{
+        font-size: 19px;
+        font-weight: 900;
+        margin-bottom: 1px;
     }
-    .image-container{
-        flex-direction: column; 
-         display:flex;
-         width: 100%;
-         justify-content: center;
-         align-items: center;
+    
+    .subtitle{
+        font-size: 12px;
+        margin-bottom: 1px;
+        letter-spacing: 1.18px;
+        color: #a1a1a1;
+        font-weight: lighter;
     }
-    .creator-container{
-        flex-direction: column; 
-         display:flex;
-         width: 100%;
-        padding-left: 30px;
-        padding-right: 30px;
-        margin-top: 10px;
+    
+    .description{
+        font-size: 12px;
+        line-height: 18px;
+        margin-bottom: 1px;
+        color: #696969;
     }
-    .custom-image{
-        width: 300px;
-        height:300px;
-    }
-
-
 }
 
- @media only screen
 
-and (min-device-width: 540px)
 
-and (max-device-width: 667px){
-    .custom-image{
-        width: 300px;
-        height:300px;
+
+
+/* for Ipads and Tablets */
+@media screen and (min-width: 481px) and (max-width: 900px){
+    .about-container{
+        display: flex;
+        flex-direction: column;
+        height: auto;
     }
-} 
 
-
-
-
-
-@media screen and (min-width:667px)and (max-width:1023px){
-    * {
-        box-sizing: border-box;
-        margin: 0px;
-        padding: 0px;
-     }
-     .main-container{
-        display:block;
-    }
     .image-container{
-        flex-direction: column; 
-         display:flex;
-         width: 100%;
-         justify-content: center;
-         align-items: center;
+        width: 100%;
+        margin-bottom: 20px;
     }
-    .creator-container{
-        flex-direction: column; 
-         display:flex;
-         width: 100%;
-        padding-left: 90px;
-        padding-right: 90px;
-        margin-top: 10px;
-    }
+
     .custom-image{
-        width: 650px;
-        height:auto;
+        width: 100%;
+        height: 500px;
+        object-fit: cover;
+    }
+
+    .description-container{
+        width: 100%;
+    }
+
+    .description-sub-container{
+        width: 100%;
+        padding: 0px;
+    }
+    
+    .name{
+        font-size: 20px;
+        font-weight: 900;
+        margin-bottom: 5px;
+    }
+    
+    .subtitle{
+        font-size: 12px;
+        margin-bottom: 10px;
+        letter-spacing: 1.18px;
+        color: #a1a1a1;
+        font-weight: lighter;
+    }
+    
+    .description{
+        font-size: 12px;
+        line-height: 24px;
+        margin-bottom: 5px;
+        color: #696969;
     }
 }
